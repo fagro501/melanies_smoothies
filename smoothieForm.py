@@ -14,6 +14,7 @@ st.write(
 cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("fruit_name"), col("search_on"))
+pd_df = my_dataframe.toPandas()
 # st.dataframe(data=my_dataframe, use_container_width=True)
 # st.stop();
 ingredients_list = st.multiselect("Choose up to 5 ingredients:", my_dataframe, 
